@@ -1,0 +1,41 @@
+{
+  "name": "saas",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+  "build:css": "./node_modules/.bin/tailwindcss -i ./styles/globals.css -o ./styles/tailwind-output.css --minify --content './pages/**/*.{js,ts,jsx,tsx},./components/**/*.{js,ts,jsx,tsx}'",
+    "build": "npm run build:css && next build --turbopack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.33.3",
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "next": "15.5.4",
+    "openai": "^4.9.0",
+    "react": "19.1.0",
+    "react-datepicker": "^8.7.0",
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/cli": "^4.1.14",
+    "@tailwindcss/node": "^4.1.14",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "lightningcss": "^1.30.2",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5"
+  }
+}
