@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: opslab
+      POSTGRES_PASSWORD: opslab
+      POSTGRES_DB: opslab
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ..
+      dockerfile: infra/dockerfiles/api.Dockerfile
+    env_file: ../.env.example
+    environment:
+      DATABASE_URL: postgres+psycopg2://opslab:opslab@db:5432/opslab
+      ALLOW_ORIGINS: http://localhost:8501
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  ui:
+    build:
+      context: ..
+      dockerfile: infra/dockerfiles/ui.Dockerfile
+    env_file: ../.env.example
+    environment:
+      API_HOST: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+volumes:
+  db_data:

@@ -1,0 +1,4 @@
+pydantic==2.7.4
+sqlalchemy==2.0.31
+protobuf==4.25.3
+bcrypt==3.2.2
